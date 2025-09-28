@@ -37,6 +37,7 @@ import {
   Cell,
   Legend,
 } from "recharts"
+import { WalletDashboard } from "@/components/wallet/wallet-dashboard"
 
 export default function DashboardPage() {
   const { user } = useAuth()
@@ -216,6 +217,11 @@ export default function DashboardPage() {
               </Button>
             </CardContent>
           </Card>
+        </div>
+
+        {/* Embedded Wallet Dashboard */}
+        <div className="mb-6 lg:mb-8">
+          <WalletDashboard balance={125000} currency="INR" />
         </div>
 
         {/* Timeline */}

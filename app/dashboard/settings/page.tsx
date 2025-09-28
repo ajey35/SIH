@@ -11,6 +11,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
 import { Settings, Shield, Bell, Award } from "lucide-react"
+import { TwoFactorAuth } from "@/components/auth/two-factor-auth"
 
 export default function SettingsPage() {
   const [notifications, setNotifications] = useState({
@@ -267,6 +268,9 @@ export default function SettingsPage() {
         </TabsContent>
 
         <TabsContent value="security" className="space-y-6">
+          {/* Two-Factor Authentication */}
+          <TwoFactorAuth />
+
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
