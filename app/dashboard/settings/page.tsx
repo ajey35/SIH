@@ -11,6 +11,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
 import { Settings, Shield, Bell, Award } from "lucide-react"
+import { TwoFactorAuth } from "@/components/auth/two-factor-auth"
+import { Enhanced2FAModal } from "@/components/auth/enhanced-2fa-modal"
 
 export default function SettingsPage() {
   const [notifications, setNotifications] = useState({
@@ -26,6 +28,8 @@ export default function SettingsPage() {
     publicRegistry: true,
     apiAccess: true,
   })
+
+  const [is2FAModalOpen, setIs2FAModalOpen] = useState(false)
 
   return (
     <div className="p-8">
@@ -267,6 +271,40 @@ export default function SettingsPage() {
         </TabsContent>
 
         <TabsContent value="security" className="space-y-6">
+          {/* Enhanced Two-Factor Authentication */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Shield className="h-5 w-5" />
+                Two-Factor Authentication
+              </CardTitle>
+              <CardDescription>Secure your account with 2FA</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="flex items-center justify-between p-4 border rounded-lg">
+                <div className="flex items-center space-x-3">
+                  <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center">
+                    <Shield className="h-5 w-5 text-purple-600" />
+                  </div>
+                  <div>
+                    <p className="font-medium">Authenticator App</p>
+                    <p className="text-sm text-muted-foreground">Use Google Authenticator, Authy, etc.</p>
+                  </div>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Badge className="bg-green-100 text-green-800">Enabled</Badge>
+                  <Button 
+                    variant="outline" 
+                    size="sm"
+                    onClick={() => setIs2FAModalOpen(true)}
+                  >
+                    Manage
+                  </Button>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
@@ -312,6 +350,16 @@ export default function SettingsPage() {
           </Card>
         </TabsContent>
       </Tabs>
+
+      {/* Enhanced 2FA Modal */}
+      <Enhanced2FAModal 
+        isOpen={is2FAModalOpen}
+        onClose={() => setIs2FAModalOpen(false)}
+        onSetupComplete={() => {
+          setIs2FAModalOpen(false)
+          // Handle setup completion
+        }}
+      />
     </div>
   )
 }
