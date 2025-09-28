@@ -37,7 +37,6 @@ import {
   Cell,
   Legend,
 } from "recharts"
-import { WalletDashboard } from "@/components/wallet/wallet-dashboard"
 
 export default function DashboardPage() {
   const { user } = useAuth()
@@ -219,10 +218,6 @@ export default function DashboardPage() {
           </Card>
         </div>
 
-        {/* Embedded Wallet Dashboard */}
-        <div className="mb-6 lg:mb-8">
-          <WalletDashboard balance={125000} currency="INR" />
-        </div>
 
         {/* Timeline */}
         <Card className="group hover:shadow-xl transition-all duration-300 border-2 hover:border-primary/20">

@@ -4,7 +4,8 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { StatCard } from "@/components/ui/stat-card"
-import { Waves, Shield, Users, TreePine, Award, ArrowRight, CheckCircle, Globe, Leaf, Zap, Sparkles } from "lucide-react"
+import { Shield, Users, TreePine, Award, ArrowRight, CheckCircle, Globe, Leaf, Zap, Sparkles } from "lucide-react"
+import { Logo } from "@/components/ui/logo"
 
 export default function HomePage() {
   return (
@@ -26,11 +27,9 @@ export default function HomePage() {
               <div className="relative group">
                 <div className="absolute inset-0 bg-primary/30 rounded-full blur-xl group-hover:blur-2xl transition-all duration-500 animate-pulse"></div>
                 <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-full blur-lg animate-ping"></div>
-                <div className="relative p-4 sm:p-6 bg-gradient-to-br from-primary/20 to-primary/10 rounded-3xl border-2 border-primary/30 backdrop-blur-sm shadow-2xl group-hover:scale-110 transition-all duration-500">
-                  <div className="relative">
-                    <Waves className="h-16 w-16 sm:h-20 sm:w-20 text-primary animate-pulse" />
-                    <Sparkles className="absolute -top-1 -right-1 h-6 w-6 text-yellow-400 animate-spin" />
-                  </div>
+                <div className="relative group-hover:scale-110 transition-all duration-500">
+                  <Logo size="xl" showText={false} className="drop-shadow-2xl" />
+                  <Sparkles className="absolute -top-1 -right-1 h-6 w-6 text-yellow-400 animate-spin" />
                 </div>
               </div>
             </div>
