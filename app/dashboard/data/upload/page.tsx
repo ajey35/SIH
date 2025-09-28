@@ -109,11 +109,11 @@ export default function DataUploadPage() {
   }
 
   return (
-    <div className="p-8">
+    <div className="p-4 sm:p-6 lg:p-8">
       <div className="max-w-4xl mx-auto">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold">Upload Field Data</h1>
-          <p className="text-muted-foreground">Submit monitoring data and observations from restoration sites</p>
+        <div className="mb-6 sm:mb-8">
+          <h1 className="text-2xl sm:text-3xl font-bold">Upload Field Data</h1>
+          <p className="text-sm sm:text-base text-muted-foreground">Submit monitoring data and observations from restoration sites</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-8">
@@ -127,11 +127,11 @@ export default function DataUploadPage() {
               <CardDescription>Select the project and data type</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="project">Project *</Label>
                   <Select value={formData.projectId} onValueChange={(value) => handleInputChange("projectId", value)}>
-                    <SelectTrigger>
+                    <SelectTrigger className="w-full">
                       <SelectValue placeholder="Select project" />
                     </SelectTrigger>
                     <SelectContent>
@@ -143,7 +143,7 @@ export default function DataUploadPage() {
                 <div className="space-y-2">
                   <Label htmlFor="dataType">Data Type *</Label>
                   <Select value={formData.dataType} onValueChange={(value) => handleInputChange("dataType", value)}>
-                    <SelectTrigger>
+                    <SelectTrigger className="w-full">
                       <SelectValue placeholder="Select data type" />
                     </SelectTrigger>
                     <SelectContent>

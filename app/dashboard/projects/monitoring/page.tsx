@@ -42,9 +42,9 @@ export default function MonitoringReportPage() {
   })
 
   useEffect(() => {
+    loadProject()
     const projectId = searchParams.get("projectId")
     if (projectId) {
-      loadProject(parseInt(projectId))
       loadExistingReports(parseInt(projectId))
     }
   }, [searchParams])
@@ -167,11 +167,11 @@ export default function MonitoringReportPage() {
   }
 
   return (
-    <div className="p-8">
+    <div className="p-4 sm:p-6 lg:p-8">
       <div className="max-w-4xl mx-auto">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold">Upload Monitoring Report</h1>
-          <p className="text-muted-foreground">
+        <div className="mb-6 sm:mb-8">
+          <h1 className="text-2xl sm:text-3xl font-bold">Upload Monitoring Report</h1>
+          <p className="text-sm sm:text-base text-muted-foreground">
             Document progress and current state of your restoration project
           </p>
         </div>
@@ -250,7 +250,7 @@ export default function MonitoringReportPage() {
               <CardDescription>Document the current state and progress</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="plantCount">Total Plant Count *</Label>
                   <Input
@@ -260,6 +260,7 @@ export default function MonitoringReportPage() {
                     value={formData.plantCount}
                     onChange={(e) => handleInputChange("plantCount", e.target.value)}
                     required
+                    className="w-full"
                   />
                   <p className="text-xs text-muted-foreground">Current number of plants in the area</p>
                 </div>
@@ -273,6 +274,7 @@ export default function MonitoringReportPage() {
                     value={formData.areaCovered}
                     onChange={(e) => handleInputChange("areaCovered", e.target.value)}
                     required
+                    className="w-full"
                   />
                 </div>
                 <div className="space-y-2">
@@ -285,6 +287,7 @@ export default function MonitoringReportPage() {
                     value={formData.survivalRate}
                     onChange={(e) => handleInputChange("survivalRate", e.target.value)}
                     required
+                    className="w-full"
                   />
                 </div>
                 <div className="space-y-2">
@@ -298,6 +301,7 @@ export default function MonitoringReportPage() {
                     value={formData.healthScore}
                     onChange={(e) => handleInputChange("healthScore", e.target.value)}
                     required
+                    className="w-full"
                   />
                 </div>
               </div>
@@ -367,7 +371,7 @@ export default function MonitoringReportPage() {
               <CardDescription>Precise location information for this monitoring report</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="sectionLabel">Section/Plot Label *</Label>
                   <Input
@@ -376,6 +380,7 @@ export default function MonitoringReportPage() {
                     value={formData.sectionLabel}
                     onChange={(e) => handleInputChange("sectionLabel", e.target.value)}
                     required
+                    className="w-full"
                   />
                 </div>
                 <div className="space-y-2">
@@ -388,6 +393,7 @@ export default function MonitoringReportPage() {
                     value={formData.latitude}
                     onChange={(e) => handleInputChange("latitude", e.target.value)}
                     required
+                    className="w-full"
                   />
                 </div>
                 <div className="space-y-2">
@@ -400,6 +406,7 @@ export default function MonitoringReportPage() {
                     value={formData.longitude}
                     onChange={(e) => handleInputChange("longitude", e.target.value)}
                     required
+                    className="w-full"
                   />
                 </div>
               </div>
@@ -416,11 +423,11 @@ export default function MonitoringReportPage() {
               <CardDescription>Upload photos showing current progress and conditions</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="border-2 border-dashed border-muted-foreground/25 rounded-lg p-8 text-center">
-                <Camera className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+              <div className="border-2 border-dashed border-muted-foreground/25 rounded-lg p-4 sm:p-6 lg:p-8 text-center hover:border-primary/50 transition-colors">
+                <Camera className="h-8 w-8 sm:h-12 sm:w-12 text-muted-foreground mx-auto mb-3 sm:mb-4" />
                 <p className="text-sm text-muted-foreground mb-2">Upload progress photos and drone images</p>
                 <p className="text-xs text-muted-foreground mb-4">Include: Plant growth, maintenance activities, community participation, challenges</p>
-                <Button variant="outline" type="button">
+                <Button variant="outline" type="button" className="w-full sm:w-auto">
                   Choose Images
                 </Button>
               </div>
@@ -457,11 +464,11 @@ export default function MonitoringReportPage() {
           )}
 
           {/* Submit */}
-          <div className="flex justify-end space-x-4">
-            <Button type="button" variant="outline" onClick={() => router.push("/dashboard/projects")}>
+          <div className="flex flex-col sm:flex-row justify-end space-y-2 sm:space-y-0 sm:space-x-4">
+            <Button type="button" variant="outline" onClick={() => router.push("/dashboard/projects")} className="w-full sm:w-auto">
               Cancel
             </Button>
-            <Button type="submit" disabled={loading}>
+            <Button type="submit" disabled={loading} className="w-full sm:w-auto">
               {loading ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />

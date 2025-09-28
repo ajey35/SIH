@@ -35,6 +35,7 @@ export function Navbar() {
         <div className="flex h-14 sm:h-16 md:h-20 items-center justify-between">
           
           {/* Logo */}
+
           <Link href="/" className="group">
             <Logo size="md" className="group-hover:scale-105 transition-transform duration-300" />
           </Link>
@@ -58,6 +59,32 @@ export function Navbar() {
                     <Badge className="absolute -top-1 -right-1 h-5 w-5 text-xs bg-green-500 text-white rounded-full flex items-center justify-center">
                       ₹0
                     </Badge>
+
+          <Link href="/" className="flex items-center space-x-2 md:space-x-3 group">
+            <div className="relative">
+              <div className="absolute inset-0 bg-primary/20 rounded-full blur-sm group-hover:blur-md transition-all duration-300"></div>
+              <div className="relative p-1.5 sm:p-2 bg-gradient-to-br from-primary/20 to-primary/10 rounded-xl border border-primary/30 shadow-lg group-hover:shadow-xl transition-all duration-300">
+                <Waves className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
+              </div>
+            </div>
+            <span className="font-bold text-base sm:text-lg md:text-2xl bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text text-transparent">
+              <span className="hidden sm:inline">Blue Carbon Registry</span>
+              <span className="sm:hidden">BCR</span>
+            </span>
+          </Link>
+
+          {/* Right Side: User Menu */}
+          <div className="flex items-center space-x-2 sm:space-x-4">
+            {user ? (
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" className="relative h-8 w-8 sm:h-10 sm:w-10 rounded-full hover:bg-primary/10 transition-all duration-300">
+                    <Avatar className="h-6 w-6 sm:h-8 sm:w-8 border-2 border-primary/20">
+                      <AvatarFallback className="bg-gradient-to-br from-primary/20 to-primary/10 text-primary font-semibold text-xs sm:text-sm">
+                        {user.name.split(" ").map(n => n[0]).join("")}
+                      </AvatarFallback>
+                    </Avatar>
+
                   </Button>
                 )}
 
@@ -121,12 +148,15 @@ export function Navbar() {
                 </DropdownMenu>
               </>
             ) : (
-              <div className="flex items-center space-x-2">
-                <Button variant="ghost" asChild>
+              <div className="flex items-center space-x-1 sm:space-x-2">
+                <Button variant="ghost" size="sm" className="hidden sm:flex" asChild>
                   <Link href="/login">Login</Link>
                 </Button>
-                <Button asChild>
-                  <Link href="/register">Register</Link>
+                <Button size="sm" className="text-xs sm:text-sm" asChild>
+                  <Link href="/register">
+                    <span className="hidden sm:inline">Register</span>
+                    <span className="sm:hidden">Join</span>
+                  </Link>
                 </Button>
               </div>
             )}

@@ -248,9 +248,9 @@ export default function ProjectsPage() {
 
                 {user.role === "Panchayat" ? (
                   <Button variant="outline" className="w-full bg-transparent" asChild>
-                    <Link href="/dashboard/data/upload">
+                    <Link href={`/dashboard/data/report-submission?projectId=${project.id}`}>
                       <Upload className="mr-2 h-4 w-4" />
-                      Upload Data
+                      Submit Report
                     </Link>
                   </Button>
                 ) : (
